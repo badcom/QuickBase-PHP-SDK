@@ -19,23 +19,23 @@
  // User Configurable Options
  -----------------------------------------------------------------------*/
 
-	var $user_name = ''; 	// QuickBase user who will access the QuickBase
-	var $passwd = ''; 		// Password of this user
-	var $db_id = ''; 		// Table/Database ID of the QuickBase being accessed
-	var $app_token = '';
-	var $xml = true;
-	var $user_id = 0;
-	var $qb_site = "www.quickbase.com";
-	var $qb_ssl = "https://www.quickbase.com/db/";
-	var $ticketHours = '';	
+	public $user_name = ''; 	// QuickBase user who will access the QuickBase
+	public $passwd = ''; 		// Password of this user
+	public $db_id = ''; 		// Table/Database ID of the QuickBase being accessed
+	public $app_token = '';
+	public $xml = true;
+	public $user_id = 0;
+	public $qb_site = "www.quickbase.com";
+	public $qb_ssl = "https://www.quickbase.com/db/";
+	public $ticketHours = '';	
 
  /*---------------------------------------------------------------------
  //	Do Not Change
  -----------------------------------------------------------------------*/
 
-	var $input = "";
-	var $output = "";
-	var $ticket = '';
+	public $input = "";
+	public $output = "";
+	public $ticket = '';
 
  /* --------------------------------------------------------------------*/	
 
