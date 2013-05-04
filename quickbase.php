@@ -920,10 +920,12 @@
 	public function purge_records($queries = 0, $qid = 0, $qname = 0) {
 
 		if($this->xml) {
-			$xml_packet = '';
-
+			$xml_packet='<qdbapi>';
+			
+			$pos = 0;
+			
 			if ($queries) {
-			$xml_packet.='';
+				$xml_packet.='<query>';
 				foreach ($queries as $query) {
 					$criteria = "";
 					if($pos > 0) {
@@ -936,22 +938,24 @@
 					$xml_packet.= $criteria;
 					$pos++;
 				}
-			$xml_packet.='';
+			$xml_packet.='</query>';
 			}
 			else if ($qid) {
-				$xml_packet .= ''.$qid.'';
+				$xml_packet .= '<qid>'.$qid.'</qid>';
 			}
 			else if ($qname) {
-				$xml_packet .= ''.$qname.'';
+				$xml_packet .= '<qname>'.$qname.'</qname>';
 			}
 			else {
 				return false;
 			}
 
-			$xml_packet.=''.$this->ticket.'
+			if ($this->app_token)
+				$xml_packet .= '<apptoken>' . $this->app_token . '</apptoken>';
 
-				';
-
+			$xml_packet .= '<ticket>'.$this->ticket.'</ticket>
+				</qdbapi>';
+			
 			$response = $this->transmit($xml_packet, 'API_PurgeRecords');
 		}
 		else {
