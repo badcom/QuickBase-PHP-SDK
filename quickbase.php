@@ -1058,5 +1058,26 @@
 		}
 		return false;
 	}
+	
+	/* API_UserRoles: http://www.quickbase.com/api-guide/index.html#userroles.html */
+	public function user_roles() {
+		if($this->xml) {
+			$xml_packet = new SimpleXMLElement('<qdbapi></qdbapi>');
+			$xml_packet->addChild('ticket',$this->ticket);
+			$xml_packet = $xml_packet->asXML();
+	
+			$response = $this->transmit($xml_packet, 'API_UserRoles');
+		}
+		else {
+			$url_string = $this->qb_ssl . $this->db_id. "?act=API_UserRoles&ticket=". $this->ticket;
+	
+			$response = $this->transmit($url_string);
+		}	
+	
+		if($response) {
+			return $response;
+		}
+		return false;
+	}
 }
 ?>
